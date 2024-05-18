@@ -1,0 +1,8 @@
+admin_dashboard:
+    path: /admin
+    controller: App\Controller\AdminController::aDashboard
+
+client_dashboard:
+    path: /client
+    controller: App\Controller\ClientController::cDashboard
+

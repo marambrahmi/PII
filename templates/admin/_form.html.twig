@@ -1,0 +1,8 @@
+{{ form_start(form) }}
+   {{ form_row(form.nomPrenom, {'label': 'Nom Complet'}) }}
+    {{ form_row(form.email, {'label': 'E-mail'}) }}
+    {{ form_row(form.password, {'label': 'Password'}) }}
+    {{ form_row(form.DateNaissance, {'label': 'Date of Birth'}) }}
+    {{ form_row(form.Numtel, {'label': 'Phone Number'}) }}
+    <button type="submit">Save</button>
+{{ form_end(form) }}
