@@ -5,4 +5,3 @@ admin_dashboard:
 client_dashboard:
     path: /client
     controller: App\Controller\ClientController::cDashboard
-

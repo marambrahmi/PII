@@ -26,17 +26,19 @@ class ClientController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="app_account_edit", methods={"GET","POST"})
-     * @Security("is_granted('ROLE_CLIENT') and client.getId() == id")
+     * @Route("/edit", name="app_account_edit", methods={"GET","POST"})
+     * @Security("is_granted('ROLE_CLIENT')")
      */
-    public function editAccount(Request $request, User $user, UserRepository $userRepository): Response
+    public function editAccount(Request $request, UserRepository $userRepository): Response
     {
+        $user = $this->getUser();
+
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $userRepository->save($user, true);
-            return $this->redirectToRoute('app_home_page', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('client_dashboard', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('client/edit.html.twig', [
@@ -46,15 +48,19 @@ class ClientController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="app_account_delete", methods={"POST"})
-     * @Security("is_granted('ROLE_CLIENT') and client.getId() == id")
+     * @Route("/delete", name="app_account_delete", methods={"POST"})
+     * @Security("is_granted('ROLE_CLIENT')")
      */
-    public function deleteAccount(Request $request, User $user, UserRepository $userRepository): Response
+    public function deleteAccount(Request $request, UserRepository $userRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
+        dd($request->getMethod());
+
+        $user = $this->getUser();
+
+        if ($this->isCsrfTokenValid('delete', $request->request->get('_token'))) {
             $userRepository->remove($user, true);
         }
 
-        return $this->redirectToRoute('app_home_page', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('client_dashboard', [], Response::HTTP_SEE_OTHER);
     }
 }

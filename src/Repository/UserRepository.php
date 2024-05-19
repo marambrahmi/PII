@@ -26,6 +26,20 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         parent::__construct($registry, User::class);
     }
 
+        /**
+     * Saves or updates the user entity.
+     *
+     * @throws ORMException
+     * @throws OptimisticLockException
+     */
+    public function save(User $user, bool $flush = true): void
+    {
+        $this->_em->persist($user);
+        if ($flush) {
+            $this->_em->flush();
+        }
+    }
+
     /**
      * @throws ORMException
      * @throws OptimisticLockException
