@@ -61,7 +61,7 @@ class AdminController extends AbstractController
             $user->setRoles(['ROLE_CLIENT']);
             $userRepository->add($user, true);
 
-            return $this->redirectToRoute('app_dashboard', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_admin_showAll', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('admin/new.html.twig', [

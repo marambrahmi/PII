@@ -64,3 +64,10 @@ class ClientController extends AbstractController
         return $this->redirectToRoute('client_dashboard', [], Response::HTTP_SEE_OTHER);
     }
 }
+
+
+/* {<script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>}
+        <script src="{{asset('vendor/jquery-ui/jquery-ui.min.js')}}"></script>
+        <script src="{{asset('vendor/jquery-validation/dist/jquery.validate.min.js')}}"></script>
+        <script src="{{asset('vendor/jquery-validation/dist/additional-methods.min.js')}}"></script>
+        <script src="{{asset('js/main.js')}}"></script> */

@@ -1,18 +1,81 @@
+
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Register</h1>
+<div class="container">
+    <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+            <div class="row justify-content-center">
+                <!-- Column for the image -->
+                <div class="col-lg-6 d-none d-lg-flex align-items-center justify-content-center">
+                    <img src="{{ asset('assets/img/loginPic (2).jpg') }}" alt="Registration Image" class="img-fluid img-custom-height">
+                </div>
+                <!-- Column for the form -->
+                <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
-    {{ form_start(form) }}
-        {{ form_row(form.nomPrenom, {'label': 'Nom et Prénom'}) }}
-        {{ form_row(form.email, {'label': 'Email'}) }}
-        {{ form_row(form.password.first, {'label': 'Password'}) }}
-        {{ form_row(form.password.second, {'label': 'Confirm Password'}) }}
-        {{ form_row(form.DateNaissance, {'label': 'Date de Naissance'}) }}
-        {{ form_row(form.Numtel, {'label': 'Numéro de Téléphone'}) }}
-        <button class="btn">Register</button>
-        <a href="{{ path('app_login') }}">Log In</a>
-        
-    {{ form_end(form) }}
-    
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="pt-4 pb-2">
+                                <h5 class="card-title text-center pb-0 fs-4">Créer Votre Compte</h5>
+                                <p class="text-center small">Entrez vos données personnelles</p>
+                            </div>
+
+                            {{ form_start(form, {'attr': {'class': 'row g-3 needs-validation', 'novalidate': ''}}) }}
+                                <div class="col-12">
+                                    {{ form_label(form.nomPrenom, 'Nom et Prénom', {'label_attr': {'class': 'form-label'}}) }}
+                                    {{ form_widget(form.nomPrenom, {'attr': {'class': 'form-control', 'id': 'yourName', 'required': ''}}) }}
+                                    {{ form_errors(form.nomPrenom, {'attr': {'class': 'text-danger'}}) }}
+                                </div>
+
+                                <div class="col-12">
+                                    {{ form_label(form.email, 'Email', {'label_attr': {'class': 'form-label'}}) }}
+                                    {{ form_widget(form.email, {'attr': {'class': 'form-control', 'id': 'yourEmail', 'required': ''}}) }}
+                                    {{ form_errors(form.email, {'attr': {'class': 'text-danger'}}) }}
+                                </div>
+
+                                <div class="col-12">
+                                    {{ form_label(form.password.first, 'Mot de passe', {'label_attr': {'class': 'form-label'}}) }}
+                                    {{ form_widget(form.password.first, {'attr': {'class': 'form-control', 'id': 'yourPassword', 'required': ''}}) }}
+                                    {{ form_errors(form.password.first, {'attr': {'class': 'text-danger'}}) }}
+                                </div>
+
+                                <div class="col-12">
+                                    {{ form_label(form.password.second, 'Confirmer votre mot de passe', {'label_attr': {'class': 'form-label'}})  }}
+                                    {{ form_widget(form.password.second, {'attr': {'class': 'form-control', 'id': 'confirmPassword', 'required': ''}}) }}
+                                </div>
+
+                                <div class="col-12">
+                                    {{ form_label(form.DateNaissance, 'Date de Naissance', {'label_attr': {'class': 'form-label'}}) }}
+                                    {{ form_widget(form.DateNaissance, {'attr': {'class': 'form-control', 'id': 'yourDateNaissance', 'required': ''}}) }}
+                                    {{ form_errors(form.DateNaissance, {'attr': {'class': 'text-danger'}}) }}
+                                </div>
+
+                                <div class="col-12">
+                                    {{ form_label(form.Numtel, 'Numéro de Téléphone', {'label_attr': {'class': 'form-label'}}) }}
+                                    {{ form_widget(form.Numtel, {'attr': {'class': 'form-control', 'id': 'yourNumtel', 'required': ''}}) }}
+                                    {{ form_errors(form.Numtel, {'attr': {'class': 'text-danger'}}) }}
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required="">
+                                        <label class="form-check-label" for="acceptTerms">J'accepte <a href="#">les termes et conditions</a></label>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100" type="submit">Créer un compte</button>
+                                </div>
+                                <div class="col-12">
+                                    <p class="small mb-0">Vous avez déjà un compte ? <a href="{{ path('app_login') }}">Se connecter</a></p>
+                                </div>
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
 {% endblock %}

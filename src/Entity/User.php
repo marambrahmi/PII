@@ -328,7 +328,7 @@ class User implements UserInterface
 
         return $this;
     }
-
+//to assign roles
     public function assignRoles($userType): self
     {
         if ($userType === 'admin') {
