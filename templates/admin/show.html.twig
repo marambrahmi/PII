@@ -2,6 +2,27 @@
 
 {% block title %}User{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        body {
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .table th {
+            background-color: #f8f9fa;
+        }
+        .table td {
+            vertical-align: middle;
+        }
+        a {
+            margin-right: 10px;
+        }
+    </style>
+{% endblock %}
+
 {% block body %}
     <h1>User</h1>
 
@@ -16,10 +37,6 @@
                 <td>{{ client.roles ? client.roles|json_encode : '' }}</td>
             </tr>
             <tr>
-                <th>Password</th>
-                <td>{{ client.password }}</td>
-            </tr>
-            <tr>
                 <th>DateNaissance</th>
                 <td>{{ client.DateNaissance ? client.DateNaissance|date('Y-m-d') : '' }}</td>
             </tr>
@@ -30,9 +47,8 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_admin_showAll') }}">back to list</a>
-
-    <a href="{{ path('app_admin_editClient', {'id': client.id}) }}">edit</a>
+    <a href="{{ path('app_admin_showAll') }}" class="btn btn-secondary">Back to list</a>
+    <a href="{{ path('app_admin_editClient', {'id': client.id}) }}" class="btn btn-primary">Edit</a>
 
     {{ include('admin/_delete_form.html.twig') }}
 {% endblock %}
