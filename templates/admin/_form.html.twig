@@ -1,75 +1,76 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-<div class="main">
-
-    <section class="signup">
-        <!-- <img src="images/signup-bg.jpg" alt=""> -->
-        <div class="container">
-            <div class="signup-content">
-                <form method="POST" id="signup-form" class="signup-form">
-                    {{ form_start(form) }}
-                    <div class="form-row">
-                        <div class="form-group">
-                            {{ form_row(form.nomPrenom, {'label': 'Nom Complet'}) }}
-                        </div>
-                        <div class="form-group">
-                        
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group form-icon">
-                            {{ form_row(form.DateNaissance, {'label': 'Date of Birth'}) }}
-                        </div>
-                        <div class="form-radio">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        {{ form_row(form.email, {'label': 'E-mail'}) }}
-                    </div>
-                    <div class="form-group">
-                        {{ form_row(form.Numtel, {'label': 'Phone Number'}) }}
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            {{ form_row(form.password, {'label': 'Password'}) }}
-                        </div>
-                    </div>
-                    <div class="form-text">
-                        <div class="add_info">
-                            <div class="form-group">
-                                <label for="country">Country</label>
-                                <div class="select-list">
-                                    <select name="country" id="country" required>
-                                        <option value="US">United State</option>
-                                        <option value="UK">English</option>
-                                        <option value="VN">Viet Nam</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="city">City</label>
-                                <div class="select-list">
-                                    <select name="city" id="city" required>
-                                        <option value="NY">NewYork</option>
-                                        <option value="IC">IceLand</option>
-                                        <option value="canada">Canada</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        {{ form_end(form) }}
-                        <input type="submit" name="submit" id="submit" class="form-submit" value="Submit"/>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-</div>
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .main {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
+        .signup {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+        .signup-content {
+            width: 100%;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-submit {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+        }
+        .form-submit:hover {
+            background-color: #0056b3;
+        }
+    </style>
 {% endblock %}
 
-
-
+{% block body %}
+<div class="main">
+    <section class="signup">
+        <div class="signup-content">
+            <form method="POST" id="signup-form" class="signup-form">
+                {{ form_start(form) }}
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        {{ form_row(form.nomPrenom, {'label': 'Nom Complet'}) }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        {{ form_row(form.DateNaissance, {'label': 'Date of Birth'}) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_row(form.email, {'label': 'E-mail'}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_row(form.Numtel, {'label': 'Phone Number'}) }}
+                </div>
+                <div class="form-group">
+                    {{ form_row(form.password, {'label': 'Password'}) }}
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="submit" id="submit" class="form-submit" value="Submit"/>
+                </div>
+                {{ form_end(form) }}
+            </form>
+        </div>
+    </section>
+</div>
+{% endblock %}

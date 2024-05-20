@@ -1,29 +1,84 @@
+{% extends 'base.html.twig' %}
 
-{% block title %}Acoount{% endblock %}
+{% block title %}Your Account{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        /* Container styles */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        /* Header styles */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        /* Account details styles */
+        .account-details {
+            margin-bottom: 30px;
+        }
+        .account-details label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .account-details span {
+            display: block;
+            margin-bottom: 15px;
+        }
+        /* Action links styles */
+        .actions {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .actions a {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .actions a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+{% endblock %}
 
 {% block body %}
-    <h1>Your account</h1>
-
-    <table class="table" border=1>
-        <tbody>
-            <tr>
-                <th>Email</th>
-                <td>{{ app.user.email }}</td>
-            </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ app.user.password }}</td>
-            </tr>
-            <tr>
-                <th>DateNaissance</th>
-                <td>{{ app.user.DateNaissance ? app.user.DateNaissance|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Numtel</th>
-                <td>{{ app.user.Numtel }}</td>
-            </tr>
-        </tbody>
-    </table>
-    <a href="{{ path('app_account_edit', {id: app.user.id}) }}">Edit Account</a>
-    <a href="{{ path('app_account_delete', {id: app.user.id}) }}">Delete Account</a>
+    <div class="container">
+        <div class="header">
+            <h1>Your Account</h1>
+        </div>
+        <div class="account-details">
+            <label>Email:</label>
+            <span>{{ app.user.email }}</span>
+            
+            <label>Password:</label>
+            <span>{{ app.user.password }}</span>
+            
+            <label>Date of Birth:</label>
+            <span>{{ app.user.DateNaissance ? app.user.DateNaissance|date('Y-m-d') : '' }}</span>
+            
+            <label>Phone Number:</label>
+            <span>{{ app.user.Numtel }}</span>
+        </div>
+        <div class="actions">
+            <a href="{{ path('app_account_edit', {id: app.user.id}) }}">Edit Account</a>
+            <a href="{{ path('app_account_delete', {id: app.user.id}) }}" onclick="return confirm('Are you sure you want to delete your account?')">Delete Account</a>
+        </div>
+    </div>
 {% endblock %}
