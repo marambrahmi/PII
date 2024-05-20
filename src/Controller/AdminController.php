@@ -77,7 +77,7 @@ class AdminController extends AbstractController
     public function showClient(User $user): Response
     {
         return $this->render('admin/show.html.twig', [
-            'Client' => $user,
+            'client' => $user,
         ]);
     }
 
