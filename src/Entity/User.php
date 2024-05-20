@@ -80,6 +80,10 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity=ReservationTour::class, mappedBy="client", orphanRemoval=true)
      */
     private $tourReservation;
+    /**
+     * @ORM\Column(type="string", length=180, nullable=true)
+     */
+    private $reset_token;
 
     public function __construct()
     {
@@ -351,5 +355,20 @@ class User implements UserInterface
         }
 
         return $this;
+    }
+    /**
+     * @return mixed
+     */
+    public function getResetToken()
+    {
+        return $this->reset_token;
+    }
+
+    /**
+     * @param mixed $reset_token
+     */
+    public function setResetToken($reset_token): void
+    {
+        $this->reset_token = $reset_token;
     }
 }
