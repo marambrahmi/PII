@@ -1,7 +1,65 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        /* Form container */
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff; /* White background */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        /* Form fields */
+        form .form-group {
+            margin-bottom: 20px;
+        }
+        form .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333; /* Dark color for labels */
+        }
+        form .form-group input,
+        form .form-group select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #007bff; /* Blue border */
+            box-sizing: border-box;
+            transition: border-color 0.3s ease; /* Smooth transition for input borders */
+        }
+        /* Hover effect for input fields */
+        form .form-group input:hover,
+        form .form-group select:hover {
+            border-color: #0056b3; /* Darker blue border on hover */
+        }
+        /* Submit button */
+        form .form-submit {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff; /* Blue background */
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Smooth background color transition */
+        }
+        /* Hover effect for submit button */
+        form .form-submit:hover {
+            background-color: #0056b3; /* Darker blue background on hover */
+        }
+    </style>
+{% endblock %}
+
 {% block body %}
 <form action="{{ path('app_account_edit', {'id': client.id}) }}" method="post">
+    <H2> Modifier votre profil</H2>
     {{ form_widget(form) }}
     <button type="submit">Save changes</button>
 </form>
-{% endblock body%}
+{% endblock %}
