@@ -11,7 +11,9 @@ use App\Entity\Reviews;
 use App\Form\ReviewType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Security;
-
+/**
+ * @Route ("/Acceuil")
+ */
 class HelloController extends AbstractController
 {
     /**

@@ -3,21 +3,19 @@
 namespace App\Controller;
 use App\Entity\Hotel;
 use Symfony\Component\Security\Core\Security;
-use App\Entity\TourPackage;
 
 use App\Entity\ReservationHotel;
 use App\Form\ReservationHotelFormType;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
-use Symfony\Component\Security\Csrf\CsrfToken;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 
-
+/**
+ * @@Route("/Hotel")
+ */
 class HotelController extends AbstractController
 {
 
@@ -28,25 +26,17 @@ class HotelController extends AbstractController
     {
         $this->security = $security;
     }
-
-
-
     /**
-     * @Route("/hotel", name="app_hotel")
+     * @Route("/", name="app_hotel")
      */
-    public function index(): Response
+    /*public function index(): Response
     {
         return $this->render('hotel/index.html.twig', [
             'controller_name' => 'HotelController',
         ]);
     }
-
- 
- 
-
-
- /**
-     * @Route("/accueil", name="hotel_list")
+    /**
+     * @Route("/lesHotels", name="hotel_list")
      */
     public function list(): Response
 {
@@ -57,8 +47,8 @@ class HotelController extends AbstractController
     ]);
 }
     
-      /**
- * @Route("/hotel/{id}/reserve", name="reserve_hotel", methods={"GET", "POST"})
+/**
+ * @Route("/{id}/reserve", name="reserve_hotel", methods={"GET", "POST"})
  */
 public function reserve(Request $request, Hotel $hotel, EntityManagerInterface $entityManager): Response
 {
@@ -92,11 +82,9 @@ public function reserve(Request $request, Hotel $hotel, EntityManagerInterface $
         'hotel' => $hotel,
     ]);
 }
-
-
-
-/**
-     * @Route("/modifier", name="client_reservation")
+    
+    /**
+     * @Route("/reserver", name="client_reservation")
      */
     public function clientReservation(): Response
     {
@@ -109,7 +97,7 @@ public function reserve(Request $request, Hotel $hotel, EntityManagerInterface $
     }
 
     /**
-     * @Route("/reservation/modifier/{id}", name="edit_reservation", methods={"GET", "POST"})
+     * @Route("/modifier/{id}", name="edit_reservation", methods={"GET", "POST"})
      */
     public function editReservation(Request $request, ReservationHotel $reservation, EntityManagerInterface $entityManager): Response
     {
@@ -146,7 +134,7 @@ public function reserve(Request $request, Hotel $hotel, EntityManagerInterface $
     }
 
     /**
-     * @Route("/reservation/{id}/delete", name="delete_reservation", methods={"POST"})
+     * @Route("/{id}/delete", name="delete_reservation", methods={"POST"})
      */
     public function deleteReservation(Request $request, EntityManagerInterface $entityManager, $id): Response
     {
@@ -165,7 +153,5 @@ public function reserve(Request $request, Hotel $hotel, EntityManagerInterface $
 
         return $this->redirectToRoute('client_reservation'); // Redirige vers la page de réservations du client
     }
-
-
 }
     

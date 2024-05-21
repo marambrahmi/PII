@@ -14,7 +14,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
-
+/**
+ * @Route("/Tourpackage")
+ */
 class TourPackageController extends AbstractController
 {
     use TargetPathTrait;
@@ -27,7 +29,7 @@ class TourPackageController extends AbstractController
     }
 
     /**
-     * @Route("/tour/package", name="app_tour_package")
+     * @Route("/", name="app_tour_package")
      */
     public function index(): Response
     {
@@ -37,7 +39,7 @@ class TourPackageController extends AbstractController
     }
 
     /**
-     * @Route("/list", name="tourpackage_list")
+     * @Route("/LesTours", name="tourpackage_list")
      */
     public function list(): Response
     {
@@ -49,7 +51,7 @@ class TourPackageController extends AbstractController
     }
 
     /**
-     * @Route("/tour/package/{id}/reserve", name="reserve_tourpackage")
+     * @Route("/{id}/reserve", name="reserve_tourpackage")
      */
     public function reserve(Request $request, $id, EntityManagerInterface $entityManager): Response
     {
@@ -102,7 +104,7 @@ class TourPackageController extends AbstractController
     }
 
     /**
-     * @Route("/tourmodifier", name="client_reservation")
+     * @Route("/modifier", name="client_reservation")
      */
     public function clientReservation(EntityManagerInterface $entityManager): Response
     {
@@ -115,7 +117,7 @@ class TourPackageController extends AbstractController
     }
 
     /**
-     * @Route("/Reservation/edit/{id}", name="modif_reservationtour", methods={"GET", "POST"})
+     * @Route("/Reservation_edit/{id}", name="modif_reservationtour", methods={"GET", "POST"})
      */
     public function edit(Request $request, ReservationTour $reservationTour, EntityManagerInterface $em): Response
     {
@@ -142,7 +144,7 @@ class TourPackageController extends AbstractController
         ]);
     }
     /**
-     * @Route("/reservationTour/delete/{id}", name="delete_reservationTour", methods={"POST"})
+     * @Route("/Reservation_delete/{id}", name="delete_reservationTour", methods={"POST"})
      */
     public function deleteReservationTour(Request $request, ReservationTour $reservationTour, EntityManagerInterface $em, CsrfTokenManagerInterface $csrfTokenManager): Response
     {

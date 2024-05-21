@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset('styles.css') }}" />
-    <title>{% block title %}Web Design Mastery | Rayal Park{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('css3/styles.css') }}" />
+    <title>{% block title %} GoVoyage {% endblock %}</title>
 </head>
 
 <body>
@@ -26,7 +26,12 @@
                 <li><a href="#explore">Flight</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <button class="btn nav__btn">S'inscrire</button>
+                <button class="btn nav__btn" id="inscriptionBtn">S'inscrire</button>
+                {%block stylesheet%}
+                <script>
+                document.getElementById('inscriptionBtn').addEventListener('click', function() {window.location.href = "{{ path('registration') }}";});
+                </script>
+                {%endblock stylesheet%}
         </nav>
         <div class="section__container header__container" id="home">
             <p>Simple - Unique - Convivial</p>
@@ -295,6 +300,6 @@
             </div>
         </div>
     </footer>
-    <script src="{{ asset('script.js') }}"></script>
+    <script src="{{ asset('js3/script.js') }}"></script>
 </body>
 </html>
