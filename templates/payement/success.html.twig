@@ -1,0 +1,57 @@
+{% block title %}Payment Success{% endblock %}
+
+{% block body %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4ffe0;
+            margin: 0;
+            padding: 0;
+        }
+        .success-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .success-container h1 {
+            color: #7c9e3d;
+            margin-bottom: 20px;
+        }
+        .success-container p {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .success-container .thank-you {
+            font-weight: bold;
+        }
+        .success-container .button-container {
+            margin-top: 20px;
+        }
+        .success-container .button-container a {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            color: #fff;
+            background-color: #7c9e3d;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .success-container .button-container a:hover {
+            background-color: #6a8833;
+        }
+    </style>
+
+    <div class="success-container">
+        <h1>Payment Successful!</h1>
+        <p>Your payment has been successfully processed.</p>
+        <p class="thank-you">Thank you for your purchase!</p>
+        <div class="button-container">
+            <a href="{{ path('home') }}" class="home-button">Go to Home</a>
+            <a href="{{ path('client_reservation') }}" class="reservation-button">View Reservations</a>
+        </div>
+    </div>
+{% endblock %}
