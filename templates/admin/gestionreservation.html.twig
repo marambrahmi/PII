@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des Réservations{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        /* Style du tableau */
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        /* Style des cellules du tableau */
+        .table th, .table td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        
+        /* Style des en-têtes du tableau */
+        .table th {
+            background-color: #4e7aaf; /* Bleu pour les en-têtes */
+            color: white;
+        }
+        
+        /* Style des lignes impaires du tableau */
+        .table tbody tr:nth-child(odd) {
+            background-color: #f2f2f2; /* Couleur de fond claire pour lignes impaires */
+        }
+
+        /* Style des lignes paires du tableau */
+        .table tbody tr:nth-child(even) {
+            background-color: #e0e0e0; /* Couleur de fond sombre pour lignes paires */
+        }
+        
+        /* Style des boutons */
+        .btn {
+            background-color: #4CAF50; /* Vert pour les boutons */
+            border: none;
+            color: white;
+            padding: 8px 12px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h1>Gestion des Réservations des hotels</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom d'hotel</th>
+                <th>Adresse</th>
+                <th>Date d'arrivée</th>
+                <th>Date de sortie</th>
+                <th>Prix unitaire</th>
+                <th>Nombre de chambre</th>
+                <th>Nombre de personne</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reservation in reservations %}
+                <tr>
+                    <td>{{ reservation.hotel.nom }}</td>
+                    <td>{{ reservation.hotel.adresse }}</td>
+                    <td>{{ reservation.dateDebut ? reservation.dateDebut|date('Y-m-d') : '' }}</td>
+                    <td>{{ reservation.dateFin ? reservation.dateFin|date('Y-m-d') : '' }}</td>
+                    <td>{{ reservation.hotel.prix }}</td>
+                    <td>{{ reservation.nbrChambre }}</td>
+                    <td>{{ reservation.nbrPersonne }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

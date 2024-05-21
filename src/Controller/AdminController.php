@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
+use App\Entity\ReservationHotel;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -113,5 +114,18 @@ class AdminController extends AbstractController
         }
 
         return $this->redirectToRoute('app_admin_showAll', [], Response::HTTP_SEE_OTHER);
+    }
+    /**
+     * @Route("/gestion", name="admin_reservations")
+     */
+    public function adminReservations(): Response
+    {
+        // Récupérez les réservations depuis la base de données
+        $reservations = $this->getDoctrine()->getRepository(ReservationHotel::class)->findAll();
+
+        // Passez les réservations à la vue pour l'affichage
+        return $this->render('admin/gestionreservation.html.twig', [
+            'reservations' => $reservations,
+        ]);
     }
 }
