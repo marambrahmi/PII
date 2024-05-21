@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\PayementRepository;
+use App\Repository\PayementhotelRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=PayementRepository::class)
+ * @ORM\Entity(repositoryClass=PayementhotelRepository::class)
  */
-class Payement
+class Payementhotel
 {
     /**
      * @ORM\Id
@@ -51,33 +51,6 @@ class Payement
      * @ORM\Column(type="decimal", precision=10, scale=0)
      */
     private $prixTotal;
-
-    /**
-     * @ORM\OneToOne(targetEntity=ReservationFlight::class, inversedBy="payement", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $payementFlight;
-
-    /**
-     * @ORM\OneToOne(targetEntity=ReservationHotel::class, inversedBy="payement", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $payementHotel;
-
-    /**
-     * @ORM\OneToOne(targetEntity=ReservationTour::class, inversedBy="payement", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $peyementTour;
-
-    /**
-     * @ORM\OneToOne(targetEntity=ReservationHotel::class, cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $hotel;
-
-
-
 
     public function getId(): ?int
     {
@@ -164,54 +137,6 @@ class Payement
     public function setPrixTotal(string $prixTotal): self
     {
         $this->prixTotal = $prixTotal;
-
-        return $this;
-    }
-
-    public function getPayementFlight(): ?ReservationFlight
-    {
-        return $this->payementFlight;
-    }
-
-    public function setPayementFlight(ReservationFlight $payementFlight): self
-    {
-        $this->payementFlight = $payementFlight;
-
-        return $this;
-    }
-
-    public function getPayementHotel(): ?ReservationHotel
-    {
-        return $this->payementHotel;
-    }
-
-    public function setPayementHotel(ReservationHotel $payementHotel): self
-    {
-        $this->payementHotel = $payementHotel;
-
-        return $this;
-    }
-
-    public function getPeyementTour(): ?ReservationTour
-    {
-        return $this->peyementTour;
-    }
-
-    public function setPeyementTour(ReservationTour $peyementTour): self
-    {
-        $this->peyementTour = $peyementTour;
-
-        return $this;
-    }
-
-    public function getHotel(): ?ReservationHotel
-    {
-        return $this->hotel;
-    }
-
-    public function setHotel(ReservationHotel $hotel): self
-    {
-        $this->hotel = $hotel;
 
         return $this;
     }
